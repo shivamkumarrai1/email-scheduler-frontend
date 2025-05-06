@@ -2,69 +2,194 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Email Scheduler App
 
-### `npm test`
+## Live Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend:** [https://email-scheduler-frontend-rh3f.vercel.app/](https://email-scheduler-frontend-rh3f.vercel.app/)
+- **Backend API:** [https://email-scheduler-backend.onrender.com](https://email-scheduler-backend.onrender.com)
 
-### `npm run build`
+## Table of Contents
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Backend Setup](#backend-setup)
+- [Frontend Setup](#frontend-setup)
+- [Running Locally](#running-locally)
+- [Deployment](#deployment)
+- [Environment Variables](#environment-variables)
+- [Testing](#testing)
+- [API Endpoints](#api-endpoints)
+- [Troubleshooting](#troubleshooting)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+my-app/
+│
+├── backend/
+│   ├── server.js
+│   ├── package.json
+│   ├── .env
+│   └── ...
+│
+└── frontend/
+    ├── src/
+    ├── public/
+    ├── package.json
+    ├── .env (optional)
+    └── ...
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Prerequisites
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Node.js](https://nodejs.org/) (v16 or above recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Git](https://git-scm.com/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account (for database)
+- [Vercel](https://vercel.com/) account (for frontend deployment)
+- [Render](https://render.com/) or [Heroku](https://heroku.com/) account (for backend deployment)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Backend Setup
 
-## Learn More
+1. **Clone the repository and navigate to the backend folder:**
+   ```bash
+   git clone https://github.com/shivamkumarrai1/email-scheduler-backend.git
+   cd email-scheduler-backend
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Create a `.env` file in the backend folder:**
+   ```
+   MONGODB_URI=your_mongodb_atlas_connection_string
+   PORT=5000
+   ```
 
-### Code Splitting
+4. **Run the backend locally:**
+   ```bash
+   npm start
+   ```
+   The backend will run on [http://localhost:5000](http://localhost:5000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Frontend Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Navigate to the frontend folder:**
+   ```bash
+   cd ../frontend
+   ```
 
-### Making a Progressive Web App
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+3. **(Optional) Create a `.env` file for environment variables:**
+   ```
+   REACT_APP_API_URL=https://your-backend-url.onrender.com/api/email/schedule
+   ```
 
-### Advanced Configuration
+4. **Run the frontend locally:**
+   ```bash
+   npm start
+   ```
+   The frontend will run on [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Running Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Start the backend (`npm start` in `/backend`)
+- Start the frontend (`npm start` in `/frontend`)
+- Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deployment
+
+### **Backend (Render)**
+1. Push your backend code to GitHub.
+2. Create a new Web Service on [Render](https://render.com/).
+3. Connect your GitHub repo.
+4. Set the build command: `npm install`
+5. Set the start command: `npm start`
+6. Add your `MONGODB_URI` environment variable in the Render dashboard.
+7. Deploy and note your backend URL.
+
+### **Frontend (Vercel)**
+1. Push your frontend code to GitHub.
+2. Import your repo on [Vercel](https://vercel.com/).
+3. Set the root directory if needed (e.g., `frontend`).
+4. Set build command: `npm run build`
+5. Set output directory: `build`
+6. (Optional) Add `REACT_APP_API_URL` environment variable if your code uses it.
+7. Deploy and note your frontend URL.
+
+---
+
+## Environment Variables
+
+### **Backend**
+- `MONGODB_URI` – Your MongoDB Atlas connection string
+- `PORT` – Port to run the server (default: 5000)
+
+### **Frontend**
+- `REACT_APP_API_URL` – (Optional) Your backend API endpoint
+
+---
+
+## Testing
+
+### **Run frontend tests:**
+```bash
+npm test
+```
+
+### **Run backend tests:**
+- (Add backend tests as needed)
+
+---
+
+## API Endpoints
+
+### **POST /api/email/schedule**
+- **Description:** Schedule an email to be sent after 1 hour.
+- **Body:**
+  ```json
+  {
+    "from": "your.email@gmail.com",
+    "pass": "your_app_password",
+    "to": "recipient@gmail.com",
+    "subject": "Test Email",
+    "body": "This is a test email."
+  }
+  ```
+
+### **GET /health**
+- **Description:** Health check endpoint.
+
+---
+
+## Troubleshooting
+
+- **502/500 errors:** Check your backend logs on Render.
+- **CORS errors:** Ensure CORS is enabled in your backend.
+- **Build errors on Vercel:** Make sure `react-scripts` is in dependencies and the correct root directory is set.
+- **MongoDB connection errors:** Double-check your `MONGODB_URI` and network access in MongoDB Atlas.
+
+---
+
+**For more help, open an issue or contact the maintainer.**
